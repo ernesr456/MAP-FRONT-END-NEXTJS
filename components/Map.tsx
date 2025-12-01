@@ -11,12 +11,15 @@ export default function Map() {
 
     // Base map
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution: "&copy; OpenStreetMap contributors",
+      tileSize: 256,
+      opacity: 0.7,
+      crossOrigin: true,
+      maxZoom: 10,
     }).addTo(map);
 
     // Radar layer from your backend
     const radarLayer = L.tileLayer(
-      `https://map-back-end-python.onrender.com//tiles/{z}/{x}/{y}.png?ts=${Date.now()}`,
+      `http://localhost:8000/tiles/{z}/{x}/{y}.png?ts=${Date.now()}`,
       {
         tileSize: 256,
         opacity: 0.7,
@@ -30,7 +33,7 @@ export default function Map() {
     return () => {
       map.remove();
     };
-  }, []); // empty dependency array, run once
+  }, []);
 
   return <div id="map" style={{ width: "100vw", height: "100vh" }} />;
 }
