@@ -16,7 +16,7 @@ export default function Map() {
 
     // Radar layer from your backend
     const radarLayer = L.tileLayer(
-      `http://localhost:8000/tiles/{z}/{x}/{y}.png?ts=${Date.now()}`,
+      `https://map-back-end-python.onrender.com//tiles/{z}/{x}/{y}.png?ts=${Date.now()}`,
       {
         tileSize: 256,
         opacity: 0.7,
